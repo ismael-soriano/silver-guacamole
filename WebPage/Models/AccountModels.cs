@@ -16,6 +16,7 @@ namespace WebPage.Models
         }
 
         public DbSet<UserProfile> UserProfiles { get; set; }
+        public DbSet<Customer> Customers { get; set; }
     }
 
     [Table("UserProfile")]
