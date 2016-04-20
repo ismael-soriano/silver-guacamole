@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Services
 {
-    public class CustomerService : IService
+    public class CustomerService : ICustomerService
     {
-        readonly IService _customer;
-        public CustomerService(IService customer)
+        readonly ICustomerService _customer;
+        public CustomerService(ICustomerService customer)
         {
             if (null == customer)
             {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Services
 {
-    public interface IService
+    public interface ICustomerService
     {
         void Add();
     }
