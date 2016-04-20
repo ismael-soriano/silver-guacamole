@@ -8,6 +8,6 @@ namespace Services
 {
     interface IService
     {
-
+        void Add();
     }
 }
