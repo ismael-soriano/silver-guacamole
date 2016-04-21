@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebPage", "WebPage\WebPage.csproj", "{BC66A201-8CD4-458E-9111-068EF81E5AB9}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{05A22DFF-FBF3-4EB2-BA78-DD3D27F1290D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infraestructure", "Infraestructure\Infraestructure.csproj", "{51680DB2-E4AC-46FE-A5C6-3E53C0C0949A}"
@@ -17,16 +15,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04-Domain", "04-Domain", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03-Infraestructure", "03-Infraestructure", "{B5D89551-9E29-43B8-9EBA-4BA3C0BC9D42}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SilverGuacamole", "SilverGuacamole\SilverGuacamole.csproj", "{70BC63FB-E644-4567-A550-417779F6B6C6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{BC66A201-8CD4-458E-9111-068EF81E5AB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BC66A201-8CD4-458E-9111-068EF81E5AB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BC66A201-8CD4-458E-9111-068EF81E5AB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BC66A201-8CD4-458E-9111-068EF81E5AB9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{05A22DFF-FBF3-4EB2-BA78-DD3D27F1290D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{05A22DFF-FBF3-4EB2-BA78-DD3D27F1290D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05A22DFF-FBF3-4EB2-BA78-DD3D27F1290D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -39,14 +35,18 @@ Global
 		{67363746-2808-4B3A-AC0B-8A061A3F7D7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{67363746-2808-4B3A-AC0B-8A061A3F7D7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{67363746-2808-4B3A-AC0B-8A061A3F7D7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70BC63FB-E644-4567-A550-417779F6B6C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70BC63FB-E644-4567-A550-417779F6B6C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70BC63FB-E644-4567-A550-417779F6B6C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70BC63FB-E644-4567-A550-417779F6B6C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{BC66A201-8CD4-458E-9111-068EF81E5AB9} = {5D494C52-A7A6-47A0-91D3-8D6E4C9B62B9}
+		{70BC63FB-E644-4567-A550-417779F6B6C6} = {5D494C52-A7A6-47A0-91D3-8D6E4C9B62B9}
 		{05A22DFF-FBF3-4EB2-BA78-DD3D27F1290D} = {03C132E0-D19D-4FED-B517-B8F3760BB04C}
-		{67363746-2808-4B3A-AC0B-8A061A3F7D7C} = {9783D802-287F-4C0A-B12B-4DC484DA18E5}
 		{51680DB2-E4AC-46FE-A5C6-3E53C0C0949A} = {B5D89551-9E29-43B8-9EBA-4BA3C0BC9D42}
+		{67363746-2808-4B3A-AC0B-8A061A3F7D7C} = {9783D802-287F-4C0A-B12B-4DC484DA18E5}
 	EndGlobalSection
 EndGlobal

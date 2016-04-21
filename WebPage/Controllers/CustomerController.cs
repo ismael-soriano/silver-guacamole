@@ -5,9 +5,9 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using WebPage.Models;
+using SilverGuacamole.Models;
 
-namespace WebPage.Controllers
+namespace SilverGuacamole.Controllers
 {
     public class CustomerController : Controller
     {
