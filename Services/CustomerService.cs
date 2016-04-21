@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Services
 {
-    public class CustomerService : ICustomerService
+    public class CustomerService : ServiceBase, ICustomerService
     {
         readonly ICustomerService _customer;
         public CustomerService(ICustomerService customer)
