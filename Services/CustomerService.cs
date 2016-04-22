@@ -3,24 +3,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Infraestructure;
 
 namespace Services
 {
     public class CustomerService : ServiceBase, ICustomerService
     {
-        readonly ICustomerService _customer;
-        public CustomerService(ICustomerService customer)
+        readonly IDbContext _context;
+        public CustomerService(IDbContext context)
         {
-            if (null == customer)
+            if (null == context)
             {
-                throw new ArgumentNullException("The field customer can not be a \"null\"");
+                throw new ArgumentNullException("context");
             }
-            _customer = customer;
+            _context = context;
         }
         public void Add()
         {
-            _customer.Add();
+            _context.Add();
         }
-     
+
+        public void SaveChanges()
+        {
+            _context.SaveChanges();
+        }
+
+        public void Dispose()
+        {
+            _context.Dispose();
+        }
     }
 }

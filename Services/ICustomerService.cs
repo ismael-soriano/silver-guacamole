@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Services
 {
-    public interface ICustomerService
+    public interface ICustomerService : IDisposable
     {
-        DbEntityEntry<TEntity> Entry<TEntity>(TEntity entity) where TEntity : class;
+        void SaveChanges();
         void Add();
     }
 }
