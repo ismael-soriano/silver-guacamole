@@ -37,15 +37,9 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-<<<<<<< HEAD
     <Reference Include="System.Data.Entity" />
-=======
-<<<<<<< HEAD
     <Reference Include="System.Data.Entity" />
-=======
->>>>>>> ba7418a57a300dd16c5d7c748a1e9f75548a6864
     <Reference Include="System.ServiceModel.DomainServices.EntityFramework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
->>>>>>> c3223dae7c3641976dea876671548614b25f84d5
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
