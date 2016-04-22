@@ -6,11 +6,13 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using SilverGuacamole.Models;
+using SilverGuacamole.Controllers;
 
 namespace SilveGuacamole.Controllers
 {
     public class CustomerController : Controller
     {
+        readonly IUserContext _db;
         private UsersContext db = new UsersContext();
 
         //
