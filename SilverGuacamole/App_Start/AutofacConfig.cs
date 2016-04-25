@@ -39,7 +39,5 @@ namespace SilverGuacamole.App_Start
             // Set MVC DI resolver to use our Autofac container
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
         }
-
-
     }
 }
