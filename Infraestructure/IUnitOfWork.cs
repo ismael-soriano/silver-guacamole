@@ -8,10 +8,9 @@ using System.Data.Entity.Infrastructure;
 
 namespace Infraestructure
 {
-    interface IUnityOfWork:IDisposable
+    interface IUnitOfWork:IDisposable
     {
         int SaveChanges();
         DbEntityEntry<TEntity> Entry<TEntity>(TEntity entity) where TEntity : class;
-
     }
 }
