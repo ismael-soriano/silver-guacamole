@@ -32,7 +32,7 @@ namespace SilveGuacamole.Controllers
 
         protected override void Dispose(bool disposing)
         {
-            db.Dispose();
+            _service.Dispose();
             base.Dispose(disposing);
         }
 

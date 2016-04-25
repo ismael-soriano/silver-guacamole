@@ -8,6 +8,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using Autofac;
 using SilverGuacamole.App_Start;
+using Autofac.Integration.Mvc;
 
 namespace SilverGuacamole
 {
@@ -25,6 +26,8 @@ namespace SilverGuacamole
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
+
+            DependencyResolver.SetResolver(new AutofacDependencyResolver(AutofacConfig.ConfigureContainer()));
         }
     }
 }
