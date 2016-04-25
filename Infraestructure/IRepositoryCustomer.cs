@@ -8,8 +8,8 @@ using Domain;
 
 namespace Infraestructure
 {
-    interface IRepositoryCustomer:IUnityOfWork
+    public interface IRepositoryCustomer:IUnitOfWork
     {
-        IDbSet<Customer> Customer { get; set; }
+        IDbSet<Customer> Customers { get; set; }
     }
 }

@@ -52,7 +52,7 @@
   <ItemGroup>
     <Compile Include="AppContext.cs" />
     <Compile Include="IRepositoryCustomer.cs" />
-    <Compile Include="IUnityOfWork.cs" />
+    <Compile Include="IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
