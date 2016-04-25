@@ -29,7 +29,5 @@ namespace SilverGuacamole.App_Start
             builder.RegisterModelBinderProvider();
             return builder.Build();
         }
-
-
     }
 }
