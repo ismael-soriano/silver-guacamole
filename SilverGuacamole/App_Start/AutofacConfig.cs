@@ -7,6 +7,7 @@ using Autofac.Integration.Mvc;
 using System.Web.Mvc;
 using SilveGuacamole.Controllers;
 using Services;
+using Infraestructure;
 
 
 
@@ -19,17 +20,19 @@ namespace SilverGuacamole.App_Start
             var builder = new ContainerBuilder();
 
             // Register dependencies in controllers
-            builder.RegisterControllers(typeof(SilverGuacamole.MvcApplication).Assembly);
+            builder.RegisterControllers(typeof(MvcApplication).Assembly);
 
-            builder.RegisterModelBinders(typeof(SilverGuacamole.MvcApplication).Assembly);
-            // Register our Data dependencies
+            builder.RegisterModelBinders(typeof(MvcApplication).Assembly);
+            
             builder.RegisterModule<AutofacWebTypesModule>();
 
             builder.RegisterType<CustomerController>().As<Controller>().InstancePerHttpRequest();
 
             builder.RegisterType<CustomerService>().As<ICustomerService>().InstancePerHttpRequest();
 
-            builder.RegisterType<CustomerService>().As<ICustomerService>().InstancePerHttpRequest();
+            builder.RegisterType<AppContext>().As<IRepositoryCustomer>().InstancePerHttpRequest();
+
+            builder.RegisterModelBinderProvider();
 
             var container = builder.Build();
 

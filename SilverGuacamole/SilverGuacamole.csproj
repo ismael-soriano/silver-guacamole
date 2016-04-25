@@ -324,6 +324,10 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Infraestructure\Infraestructure.csproj">
+      <Project>{51680db2-e4ac-46fe-a5c6-3e53c0c0949a}</Project>
+      <Name>Infraestructure</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Services\Services.csproj">
       <Project>{05a22dff-fbf3-4eb2-ba78-dd3d27f1290d}</Project>
       <Name>Services</Name>
