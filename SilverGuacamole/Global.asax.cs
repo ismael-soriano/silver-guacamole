@@ -6,6 +6,8 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Autofac;
+using SilverGuacamole.App_Start;
 
 namespace SilverGuacamole
 {
@@ -16,8 +18,8 @@ namespace SilverGuacamole
     {
         protected void Application_Start()
         {
+            AutofacConfig.ConfigureContainer();
             AreaRegistration.RegisterAllAreas();
-
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
