@@ -10,6 +10,6 @@ namespace Infraestructure
 {
     public interface IRepositoryCustomer:IUnitOfWork
     {
-        IDbSet<Customer> Customer { get; set; }
+        IDbSet<Customer> Customers { get; set; }
     }
 }
