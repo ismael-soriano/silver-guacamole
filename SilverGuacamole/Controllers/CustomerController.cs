@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using SilverGuacamole.Models;
 using SilverGuacamole.Controllers;
 using Services;
+using Domain;
 
 namespace SilveGuacamole.Controllers
 {
@@ -24,28 +25,13 @@ namespace SilveGuacamole.Controllers
             _service = service;
         }
 
+        //
+        // GET: /Customer/
+
         public ActionResult Index(string name)
         {
             var customers = _service.GetAll(name);
             return View(customers);
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            _service.Dispose();
-            base.Dispose(disposing);
-        }
-
-        /*readonly IUserContext _db;
-        private UsersContext db = new UsersContext();
-
-        //
-        // GET: /Customer/
-
-        public ActionResult Index()
-        {
-            
-            return View(db.Customers.ToList());
         }
 
         //
@@ -53,7 +39,7 @@ namespace SilveGuacamole.Controllers
 
         public ActionResult Details(int id = 0)
         {
-            Customer customer = db.Customers.Find(id);
+            Customer customer = _service.Get(id);
             if (customer == null)
             {
                 return HttpNotFound();
@@ -78,8 +64,7 @@ namespace SilveGuacamole.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Customers.Add(customer);
-                db.SaveChanges();
+                _service.Add(customer);
                 return RedirectToAction("Index");
             }
 
@@ -91,7 +76,7 @@ namespace SilveGuacamole.Controllers
 
         public ActionResult Edit(int id = 0)
         {
-            Customer customer = db.Customers.Find(id);
+            Customer customer = _service.Get(id);
             if (customer == null)
             {
                 return HttpNotFound();
@@ -108,8 +93,9 @@ namespace SilveGuacamole.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(customer).State = EntityState.Modified;
-                db.SaveChanges();
+                _service.Update(customer.Id, customer);
+                /*db.Entry(customer).State = EntityState.Modified;
+                db.SaveChanges();*/
                 return RedirectToAction("Index");
             }
             return View(customer);
@@ -120,7 +106,7 @@ namespace SilveGuacamole.Controllers
 
         public ActionResult Delete(int id = 0)
         {
-            Customer customer = db.Customers.Find(id);
+            Customer customer = _service.Get(id);
             if (customer == null)
             {
                 return HttpNotFound();
@@ -135,16 +121,14 @@ namespace SilveGuacamole.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Customer customer = db.Customers.Find(id);
-            db.Customers.Remove(customer);
-            db.SaveChanges();
+            _service.Delete(id);
             return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)
         {
-            db.Dispose();
+            _service.Dispose();
             base.Dispose(disposing);
-        }*/
+        }
     }
 }
