@@ -7,12 +7,36 @@ using System.Web;
 using System.Web.Mvc;
 using SilverGuacamole.Models;
 using SilverGuacamole.Controllers;
+using Services;
 
 namespace SilveGuacamole.Controllers
 {
     public class CustomerController : Controller
     {
-        readonly IUserContext _db;
+        readonly ICustomerService _service;
+        public CustomerController(ICustomerService service)
+        {
+            if (null == service)
+            {
+                throw new ArgumentNullException("service");
+            }
+
+            _service = service;
+        }
+
+        public ActionResult Index(string name)
+        {
+            var customers = _service.GetAll(name);
+            return View(customers);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            db.Dispose();
+            base.Dispose(disposing);
+        }
+
+        /*readonly IUserContext _db;
         private UsersContext db = new UsersContext();
 
         //
@@ -121,6 +145,6 @@ namespace SilveGuacamole.Controllers
         {
             db.Dispose();
             base.Dispose(disposing);
-        }
+        }*/
     }
 }
