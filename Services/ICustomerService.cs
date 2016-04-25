@@ -11,5 +11,6 @@ namespace Services
     {
         void SaveChanges();
         void Add();
+        void Substract();
     }
 }
