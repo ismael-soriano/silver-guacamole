@@ -53,6 +53,11 @@ namespace Services
             return _repository.Customers.Where(c => c.Name.Contains(name) || name == null);
         }
 
+        public IEnumerable<Customer> GetAll()
+        {
+            return _repository.Customers;
+        }
+
         void UpdateCustomer(Customer customer, Customer customerOld)
         {
             customerOld.Name = customer.Name;

@@ -15,5 +15,6 @@ namespace Services
         void Delete(int id);
         Customer Get(int id);
         IEnumerable<Customer> GetAll(string name);
+        IEnumerable<Customer> GetAll();
     }
 }

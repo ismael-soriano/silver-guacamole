@@ -28,9 +28,9 @@ namespace SilveGuacamole.Controllers
         //
         // GET: /Customer/
 
-        public ActionResult Index(string name)
+        public ActionResult Index()
         {
-            var customers = _service.GetAll(name);
+            var customers = _service.GetAll().ToList();
             return View(customers);
         }
 
@@ -65,7 +65,7 @@ namespace SilveGuacamole.Controllers
             if (ModelState.IsValid)
             {
                 _service.Add(customer);
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Customer");
             }
 
             return View(customer);
