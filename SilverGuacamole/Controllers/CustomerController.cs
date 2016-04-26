@@ -88,7 +88,7 @@ namespace SilveGuacamole.Controllers
         // POST: /Customer/Edit/5
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public ActionResult Edit(Customer customer)
         {
             if (ModelState.IsValid)
@@ -118,7 +118,7 @@ namespace SilveGuacamole.Controllers
         // POST: /Customer/Delete/5
 
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
             _service.Delete(id);

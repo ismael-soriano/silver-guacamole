@@ -1,4 +1,5 @@
-﻿using Services;
+﻿using Domain;
+using Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,9 +23,9 @@ namespace SilverGuacamoleAPI.Controllers
         }
 
         // GET api/customer
-        public IEnumerable<string> Get()
+        public IEnumerable<Customer> Get()
         {
-            return _service.GetAll("") as IEnumerable<string>;
+            return _service.GetAll();
 
             //return new string[] { "value1", "value2" };
         }
