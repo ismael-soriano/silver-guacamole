@@ -5,12 +5,9 @@
 *.suo
 *.user
 *.sln.docstates
-*.mdf
 
 # Build results
 
-[Aa]pp_Data/
-[Pp]ackages/
 [Dd]ebug/
 [Rr]elease/
 x64/
@@ -98,9 +95,21 @@ publish/
 # Publish Web Output
 *.Publish.xml
 
-# NuGet Packages Directory
-## TODO: If you have NuGet Package Restore enabled, uncomment the next line
-#packages/
+# NuGet Packages
+*.nupkg
+# The packages folder can be ignored because of Package Restore
+**/packages/*
+# except build/, which is used as an MSBuild target.
+!**/packages/build/
+# Uncomment if necessary however generally it will be regenerated when needed
+#!**/packages/repositories.config
+# NuGet v3's project.json files produces more ignoreable files
+*.nuget.props
+*.nuget.targets
+
+# SQL Server files
+*.mdf
+*.ldf
 
 # Windows Azure Build Output
 csx
