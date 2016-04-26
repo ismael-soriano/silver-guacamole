@@ -33,7 +33,7 @@ namespace SilverGuacamoleAPI.Controllers
         public string Get(int id)
         {
             return _service.Get(id).ToString();
-            return "value";
+            //return "value";
         }
 
         // POST api/customer
