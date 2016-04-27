@@ -25,6 +25,11 @@ namespace SilverGuacamoleAPI
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AutofacConfig.RegisterAutoFac();
+
+
+            //Delegating Handler
+            HandlerConfig.RegisterHandlers(GlobalConfiguration.Configuration.MessageHandlers);
+
         }
     }
 }
