@@ -171,6 +171,7 @@
     </Compile>
     <Compile Include="Handler\AuthorizeHandler.cs" />
     <Compile Include="Handler\CORSHandler.cs" />
+    <Compile Include="Handler\PatataHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

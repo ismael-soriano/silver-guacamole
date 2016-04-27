@@ -14,6 +14,7 @@ namespace SilverGuacamoleAPI.App_Start
         {
             handlers.Add(new CorsMessageHandler());
             handlers.Add(new AuthorizeHandler());
+            handlers.Add(new PatataHandler());
         }
     }
 }
