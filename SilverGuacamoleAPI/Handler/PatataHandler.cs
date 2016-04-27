@@ -5,19 +5,32 @@ using System.Net.Http;
 using System.Web;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Net;
 
 namespace SilverGuacamoleAPI.Handler
 {
     public class PatataHandler : DelegatingHandler
     {
+        const string VUELING_HEADER = "X-Vueling";
+
         protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
-            return base.SendAsync(request, cancellationToken).ContinueWith(task =>
+            var value = request.Headers.GetValues(VUELING_HEADER).FirstOrDefault();
+            int parseValue;
+
+            if(int.TryParse(value, out parseValue))
             {
-                var response = task.Result;
-                response.Headers.Add("x-Dummy-Header", Guid.NewGuid().ToString());
-                return response;
-            });
+                parseValue = parseValue * 2;
+            }
+
+            return base.SendAsync(request, cancellationToken).ContinueWith(t =>
+            {
+                HttpResponseMessage resp = t.Result;
+                resp.Headers.Add(VUELING_HEADER, parseValue.ToString());
+                return resp;
+            });    
         }
+
+    
     }
 }

@@ -43,7 +43,7 @@ namespace SilverGuacamoleAPI.Handler
 
     public class AuthorizeHandler : DelegatingHandler
     {
-        protected override System.Threading.Tasks.Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, System.Threading.CancellationToken cancellationToken)
+        protected override System.Threading.Tasks.Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
             Thread.CurrentPrincipal = new OAuthAuthorize();
             return base.SendAsync(request, cancellationToken);
