@@ -13,6 +13,7 @@ namespace SilverGuacamoleAPI.App_Start
         public static void RegisterHandlers(Collection<DelegatingHandler> handlers)
         {
             handlers.Add(new CorsMessageHandler());
+            handlers.Add(new AuthorizeHandler());
         }
     }
 }

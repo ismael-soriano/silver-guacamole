@@ -47,11 +47,18 @@ namespace SilverGuacamoleAPI.Handler
             }
         }
 
+<<<<<<< HEAD
         private static void AddCorsResponseHeaders(HttpRequestMessage request, HttpResponseMessage response)
         {
             //response.Headers.Add(AccessControlAllowOrigin, request.Headers.GetValues(Origin).First());
             // La linea de abajo permitirá que la API sea pública. Nunca se debe devolver el mismo dominio que entra
             response.Headers.Add(AccessControlAllowOrigin, "*");
+=======
+            private static void AddCorsResponseHeaders(HttpRequestMessage request, HttpResponseMessage response)
+            {
+                //response.Headers.Add(AccessControlAllowOrigin, request.Headers.GetValues(Origin).First());
+                response.Headers.Add(AccessControlAllowOrigin, "*");
+>>>>>>> bb9ee52aaef68d336441f325176840e7b7151c7d
 
 
             string accessControlRequestMethod = request.Headers.GetValues(AccessControlRequestMethod).FirstOrDefault();
