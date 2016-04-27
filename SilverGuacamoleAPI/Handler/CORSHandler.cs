@@ -49,7 +49,8 @@ namespace SilverGuacamoleAPI.Handler
 
             private static void AddCorsResponseHeaders(HttpRequestMessage request, HttpResponseMessage response)
             {
-                response.Headers.Add(AccessControlAllowOrigin, request.Headers.GetValues(Origin).First());
+                //response.Headers.Add(AccessControlAllowOrigin, request.Headers.GetValues(Origin).First());
+                response.Headers.Add(AccessControlAllowOrigin, "*");
 
                 string accessControlRequestMethod = request.Headers.GetValues(AccessControlRequestMethod).FirstOrDefault();
                 if (accessControlRequestMethod != null)

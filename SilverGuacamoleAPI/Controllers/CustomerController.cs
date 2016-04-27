@@ -9,6 +9,7 @@ using System.Web.Http;
 
 namespace SilverGuacamoleAPI.Controllers
 {
+    [Authorize]
     public class CustomerController : ApiController
     {
         readonly ICustomerService _service;
