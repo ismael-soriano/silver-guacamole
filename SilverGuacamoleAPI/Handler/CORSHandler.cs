@@ -9,59 +9,62 @@ using System.Net;
 
 namespace SilverGuacamoleAPI.Handler
 {
-        public class CorsMessageHandler : DelegatingHandler
+    public class CorsMessageHandler : DelegatingHandler
+    {
+        const string Origin = "Origin";
+        const string AccessControlRequestMethod = "Access-Control-Request-Method";
+        const string AccessControlRequestHeaders = "Access-Control-Request-Headers";
+        const string AccessControlAllowOrigin = "Access-Control-Allow-Origin";
+        const string AccessControlAllowMethods = "Access-Control-Allow-Methods";
+        const string AccessControlAllowHeaders = "Access-Control-Allow-Headers";
+
+        protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
-            const string Origin = "Origin";
-            const string AccessControlRequestMethod = "Access-Control-Request-Method";
-            const string AccessControlRequestHeaders = "Access-Control-Request-Headers";
-            const string AccessControlAllowOrigin = "Access-Control-Allow-Origin";
-            const string AccessControlAllowMethods = "Access-Control-Allow-Methods";
-            const string AccessControlAllowHeaders = "Access-Control-Allow-Headers";
+            return request.Headers.Contains(Origin) ?
+                ProcessCorsRequest(request, ref cancellationToken) :
+                base.SendAsync(request, cancellationToken);
+        }
 
-            protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+        private Task<HttpResponseMessage> ProcessCorsRequest(HttpRequestMessage request, ref CancellationToken cancellationToken)
+        {
+            if (request.Method == HttpMethod.Options)
             {
-                return request.Headers.Contains(Origin) ?
-                    ProcessCorsRequest(request, ref cancellationToken) :
-                    base.SendAsync(request, cancellationToken);
+                return Task.Factory.StartNew<HttpResponseMessage>(() =>
+                {
+                    HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
+                    AddCorsResponseHeaders(request, response);
+                    return response;
+                }, cancellationToken);
             }
-
-            private Task<HttpResponseMessage> ProcessCorsRequest(HttpRequestMessage request, ref CancellationToken cancellationToken)
+            else
             {
-                if (request.Method == HttpMethod.Options)
+                return base.SendAsync(request, cancellationToken).ContinueWith<HttpResponseMessage>(task =>
                 {
-                    return Task.Factory.StartNew<HttpResponseMessage>(() =>
-                    {
-                        HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
-                        AddCorsResponseHeaders(request, response);
-                        return response;
-                    }, cancellationToken);
-                }
-                else
-                {
-                    return base.SendAsync(request, cancellationToken).ContinueWith<HttpResponseMessage>(task =>
-                    {
-                        HttpResponseMessage resp = task.Result;
-                        resp.Headers.Add(AccessControlAllowOrigin, request.Headers.GetValues(Origin).First());
-                        return resp;
-                    });
-                }
-            }
-
-            private static void AddCorsResponseHeaders(HttpRequestMessage request, HttpResponseMessage response)
-            {
-                response.Headers.Add(AccessControlAllowOrigin, request.Headers.GetValues(Origin).First());
-
-                string accessControlRequestMethod = request.Headers.GetValues(AccessControlRequestMethod).FirstOrDefault();
-                if (accessControlRequestMethod != null)
-                {
-                    response.Headers.Add(AccessControlAllowMethods, accessControlRequestMethod);
-                }
-
-                string requestedHeaders = string.Join(", ", request.Headers.GetValues(AccessControlRequestHeaders));
-                if (!string.IsNullOrEmpty(requestedHeaders))
-                {
-                    response.Headers.Add(AccessControlAllowHeaders, requestedHeaders);
-                }
+                    HttpResponseMessage resp = task.Result;
+                    resp.Headers.Add(AccessControlAllowOrigin, request.Headers.GetValues(Origin).First());
+                    return resp;
+                });
             }
         }
+
+        private static void AddCorsResponseHeaders(HttpRequestMessage request, HttpResponseMessage response)
+        {
+            //response.Headers.Add(AccessControlAllowOrigin, request.Headers.GetValues(Origin).First());
+            // La linea de abajo permitirá que la API sea pública. Nunca se debe devolver el mismo dominio que entra
+            response.Headers.Add(AccessControlAllowOrigin, "*");
+
+
+            string accessControlRequestMethod = request.Headers.GetValues(AccessControlRequestMethod).FirstOrDefault();
+            if (accessControlRequestMethod != null)
+            {
+                response.Headers.Add(AccessControlAllowMethods, accessControlRequestMethod);
+            }
+
+            string requestedHeaders = string.Join(", ", request.Headers.GetValues(AccessControlRequestHeaders));
+            if (!string.IsNullOrEmpty(requestedHeaders))
+            {
+                response.Headers.Add(AccessControlAllowHeaders, requestedHeaders);
+            }
+        }
+    }
 }
