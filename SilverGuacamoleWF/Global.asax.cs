@@ -13,11 +13,11 @@ namespace SilverGuacamoleWF
 {
     public class Global : HttpApplication, IContainerProviderAccessor
     {
-        // Provider that holds the application container.
         static IContainerProvider _containerProvider;
 
-        // Instance property that will be used by Autofac HttpModules
-        // to resolve and inject dependencies.
+        /// <summary>
+        /// Necesario para trabajar con Autofac
+        /// </summary>
         public IContainerProvider ContainerProvider
         {
             get { return _containerProvider; }
@@ -25,23 +25,10 @@ namespace SilverGuacamoleWF
 
         void Application_Start(object sender, EventArgs e)
         {
-            // Código que se ejecuta al iniciar la aplicación
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterOpenAuth();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             _containerProvider = new ContainerProvider(AutofacConfig.GetBuilder());
-        }
-
-        void Application_End(object sender, EventArgs e)
-        {
-            //  Código que se ejecuta al cerrarse la aplicación
-
-        }
-
-        void Application_Error(object sender, EventArgs e)
-        {
-            // Código que se ejecuta cuando se produce un error no controlado
-
         }
     }
 }
