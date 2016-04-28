@@ -15,20 +15,25 @@ namespace SilverGuacamoleAPI.Handler
 
         protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
-            var value = request.Headers.GetValues(VUELING_HEADER).FirstOrDefault();
-            int parseValue;
-
-            if(int.TryParse(value, out parseValue))
+            if (request.Headers.Contains(VUELING_HEADER))
             {
-                parseValue = parseValue * 2;
+                var value = request.Headers.GetValues(VUELING_HEADER).FirstOrDefault();
+                int parseValue;
+
+                if (int.TryParse(value, out parseValue))
+                {
+                    parseValue = parseValue * 2;
+                }
+
+                return base.SendAsync(request, cancellationToken).ContinueWith(t =>
+                {
+                    HttpResponseMessage resp = t.Result;
+                    resp.Headers.Add(VUELING_HEADER, parseValue.ToString());
+                    return resp;
+                });
             }
 
-            return base.SendAsync(request, cancellationToken).ContinueWith(t =>
-            {
-                HttpResponseMessage resp = t.Result;
-                resp.Headers.Add(VUELING_HEADER, parseValue.ToString());
-                return resp;
-            });    
+            return base.SendAsync(request, cancellationToken);
         }
 
     
