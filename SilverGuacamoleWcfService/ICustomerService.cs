@@ -5,21 +5,37 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using Domain;
 
 namespace SilverGuacamoleWcfService
 {
     // NOTA: puede usar el comando "Rename" del menú "Refactorizar" para cambiar el nombre de interfaz "IService1" en el código y en el archivo de configuración a la vez.
     [ServiceContract]
-    public interface IService1
+    public interface ICustomerService
     {
+        [OperationContract]
+        [WebInvoke(Method = "Post", ResponseFormat = WebMessageFormat.Json)]
+        Customer Add(Customer customer);
 
         [OperationContract]
-        string GetData(int value);
+        [WebInvoke(Method = "Post", ResponseFormat = WebMessageFormat.Json)]
+        Customer Update(int id, Customer customer);
 
         [OperationContract]
-        CompositeType GetDataUsingDataContract(CompositeType composite);
+        [WebInvoke(UriTemplate = "DeleteCustomer/{id}", ResponseFormat = WebMessageFormat.Json)]
+        Customer Delete(int id);
 
-        // TODO: agregue aquí sus operaciones de servicio
+        [OperationContract]
+        [WebGet(UriTemplate = "Customer/{id}", ResponseFormat = WebMessageFormat.Json)]
+        Customer Get(int id);
+
+        [OperationContract]
+        [WebGet(UriTemplate = "Customer/", ResponseFormat = WebMessageFormat.Json)]
+        Customer GetAll();
+
+        [OperationContract]
+        [WebGet(UriTemplate = "Customer/{name}", ResponseFormat = WebMessageFormat.Json)]
+        Customer GetAll(string name);
     }
 
 

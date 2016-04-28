@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SilverGuacamoleAPI", "Silve
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SilverGuacamoleWF", "SilverGuacamoleWF\SilverGuacamoleWF.csproj", "{CF147614-F822-4CCC-B3EC-DDA92A3197AF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SilverGuacamoleWcfService", "SilverGuacamoleWcfService\SilverGuacamoleWcfService.csproj", "{12EDA5ED-95AA-41D9-982C-76BB02F56E45}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{CF147614-F822-4CCC-B3EC-DDA92A3197AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF147614-F822-4CCC-B3EC-DDA92A3197AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF147614-F822-4CCC-B3EC-DDA92A3197AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12EDA5ED-95AA-41D9-982C-76BB02F56E45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12EDA5ED-95AA-41D9-982C-76BB02F56E45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12EDA5ED-95AA-41D9-982C-76BB02F56E45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12EDA5ED-95AA-41D9-982C-76BB02F56E45}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,5 +68,6 @@ Global
 		{70BC63FB-E644-4567-A550-417779F6B6C6} = {5D494C52-A7A6-47A0-91D3-8D6E4C9B62B9}
 		{5E69DCDF-2A27-4A61-BDD0-D7A42C45280C} = {5D494C52-A7A6-47A0-91D3-8D6E4C9B62B9}
 		{CF147614-F822-4CCC-B3EC-DDA92A3197AF} = {5D494C52-A7A6-47A0-91D3-8D6E4C9B62B9}
+		{12EDA5ED-95AA-41D9-982C-76BB02F56E45} = {5D494C52-A7A6-47A0-91D3-8D6E4C9B62B9}
 	EndGlobalSection
 EndGlobal
