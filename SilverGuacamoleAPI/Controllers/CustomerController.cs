@@ -27,30 +27,30 @@ namespace SilverGuacamoleAPI.Controllers
         public IEnumerable<Customer> Get()
         {
             return _service.GetAll();
-
-            //return new string[] { "value1", "value2" };
         }
 
         // GET api/customer/5
-        public string Get(int id)
+        public Customer Get(int id)
         {
-            return _service.Get(id).ToString();
-            //return "value";
+            return _service.Get(id);
         }
 
         // POST api/customer
-        public void Post([FromBody]string value)
+        public void Post([FromBody]Customer customer)
         {
+            _service.Add(customer);
         }
 
         // PUT api/customer/5
-        public void Put(int id, [FromBody]string value)
+        public void Put(int id, [FromBody]Customer customer)
         {
+            _service.Update(id, customer);
         }
 
         // DELETE api/customer/5
         public void Delete(int id)
         {
+            _service.Delete(id);
         }
     }
 }

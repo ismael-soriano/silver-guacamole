@@ -75,5 +75,11 @@ namespace Services
                 throw new NullReferenceException("The customer doesn't exist.");
         }
 
+        
+        public static int DoSomething(this int num)
+        {
+            return num + 2.DoSomething();
+        }
+
     }
 }

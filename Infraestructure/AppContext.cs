@@ -11,11 +11,7 @@ namespace Infraestructure
     public class AppContext:DbContext,IUnitOfWork,IRepositoryCustomer
     {
 
-        public AppContext()
-            : base("DefaultConnection")
-        {
-
-        }
+        public AppContext(): base("DefaultConnection") { }
         public IDbSet<Customer> Customers { get; set; }
     }
 }
