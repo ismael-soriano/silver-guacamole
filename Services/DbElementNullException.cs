@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace Services
 {
-    public static class MyExtensionMethods
+    class DbElementNullException : Exception
     {
-        public static void DoSomething(this int num) {}
+        public DbElementNullException(string message) : base(message)
+        {
+
+        }
     }
 }

@@ -10,14 +10,13 @@ namespace Services
 {
     public class CustomerService : ServiceBase, ICustomerService
     {
+        const string CUSTOMER_ERR_MSG = "The customer doesn't exist.";
+        const string REPOSITORY_ERR_MSG = "repository";
         readonly IRepositoryCustomer _repository;
         public CustomerService(IRepositoryCustomer repository)
             : base(repository)
         {
-            if (null == repository)
-            {
-                throw new ArgumentNullException("repository");
-            }
+            Check.ArgumentIsNull(repository, REPOSITORY_ERR_MSG);
             _repository = repository;
         }
 
@@ -32,7 +31,7 @@ namespace Services
         public void Update(int id, Customer customer)
         {
             var customerOld = GetCustomer(id);
-            CheckNullCustomer(customerOld);
+            Check.ElementIsNull(customer, CUSTOMER_ERR_MSG);
             UpdateCustomer(customer, customerOld);
             SaveChanges();
         }
@@ -40,7 +39,7 @@ namespace Services
         public void Delete(int id)
         {
             var customer = GetCustomer(id);
-            CheckNullCustomer(customer);
+            Check.ElementIsNull(customer, CUSTOMER_ERR_MSG);
         }
 
         public Customer Get(int id)
@@ -68,18 +67,5 @@ namespace Services
         {
             return _repository.Customers.Where(c => c.Id == id).FirstOrDefault();
         }
-
-        void CheckNullCustomer(Customer customer)
-        {
-            if(null == customer)
-                throw new NullReferenceException("The customer doesn't exist.");
-        }
-
-        
-        public static int DoSomething(this int num)
-        {
-            return num + 2.DoSomething();
-        }
-
     }
 }

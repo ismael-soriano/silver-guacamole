@@ -17,11 +17,7 @@ namespace SilveGuacamole.Controllers
         readonly ICustomerService _service;
         public CustomerController(ICustomerService service)
         {
-            if (null == service)
-            {
-                throw new ArgumentNullException("service");
-            }
-
+            Check.ArgumentIsNull(service, "service");
             _service = service;
         }
 
@@ -94,8 +90,6 @@ namespace SilveGuacamole.Controllers
             if (ModelState.IsValid)
             {
                 _service.Update(customer.Id, customer);
-                /*db.Entry(customer).State = EntityState.Modified;
-                db.SaveChanges();*/
                 return RedirectToAction("Index");
             }
             return View(customer);
