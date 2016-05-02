@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="SilverGuacamoleWcfService.Contracts.ICustomerServiceWcf, SilverGuacamoleWcfService" Factory="Autofac.Integration.Wcf.AutofacServiceHostFactory, Autofac.Integration.Wcf" CodeBehind="CustomerServiceWcf.svc.cs" %>

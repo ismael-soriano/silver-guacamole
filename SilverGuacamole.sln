@@ -16,6 +16,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03-Infraestructure", "03-Infraestructure", "{B5D89551-9E29-43B8-9EBA-4BA3C0BC9D42}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SilverGuacamole", "SilverGuacamole\SilverGuacamole.csproj", "{70BC63FB-E644-4567-A550-417779F6B6C6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{12EDA5ED-95AA-41D9-982C-76BB02F56E45} = {12EDA5ED-95AA-41D9-982C-76BB02F56E45}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SilverGuacamoleAPI", "SilverGuacamoleAPI\SilverGuacamoleAPI.csproj", "{5E69DCDF-2A27-4A61-BDD0-D7A42C45280C}"
 EndProject
